@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SolaimanLipi";
+  src: url("/solaimanlipi.woff") format("truetype");
+  font-weight: 400;
+}
+.ql-editor {
+  font-family: "SolaimanLipi";
+}
+.svg-card {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.tab:is(input[type="radio"]):after {
+  display: flex;
+  width: 100%;
+  color: darkblue;
+  font-weight: bold;
+}
+
+/* container 2 */
+.container2 {
+  width: 100%;
+}
+@media (min-width: 440px) {
+  .container2 {
+    max-width: 340px;
+  }
+}
+@media (min-width: 668px) {
+  .container2 {
+    max-width: 568px;
+  }
+}
+@media (min-width: 924px) {
+  .container2 {
+    max-width: 824px;
+  }
+}
+@media (min-width: 1180px) {
+  .container2 {
+    max-width: 1080px;
+  }
+}
+@media (min-width: 1336px) {
+  .container2 {
+    max-width: 1236px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .ql-editor {
+    font-size: 14px;
+    padding: 0 4px !important;
+  }
+}
+
+@media only screen and (min-width: 701px) {
+  .ql-editor {
+    font-size: 17px;
+  }
+}
+button.ql-list {
+  background-image: url("/list.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+button.ql-list:hover {
+  background-image: url("/listactive.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+button.ql-list {
+  margin-top: 4px !important;
+  width: 16px !important;
+}
+button.ql-list.ql-active {
+  background-image: url("/listactive.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+
+button.ql-header {
+  background-image: url("/h1.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+button.ql-header:hover {
+  background-image: url("/h1active.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+button.ql-header {
+  margin-top: 5px !important;
+  width: 14px !important;
+  margin-left: 6px;
+}
+button.ql-header.ql-active {
+  background-image: url("/h1active.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding: 12px;
+}
+html {
+  font-family: SolaimanLipi, cursive;
+}
+
+.swiper-button-next:after {
+  content: url("/right.svg") !important;
+}
+.swiper-button-prev:after {
+  content: url("/left.svg") !important;
+}
+
+.card-container {
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 12px;
+  border: 4px solid transparent;
+}
+
+.card-container {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  color: darkblue;
+  cursor: pointer;
+}
