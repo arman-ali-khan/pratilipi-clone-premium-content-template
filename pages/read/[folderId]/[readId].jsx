@@ -105,7 +105,7 @@ function readId() {
                 <TiArrowForwardOutline className="w-12" size={24} />
               </button>
               {/* Premium btn */}
-              <button className="text-right bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] text-white px-2 py-1 rounded flex truncate items-center gap-1">
+              <button className="text-right bg-gradient text-white px-2 py-1 rounded flex truncate items-center gap-1">
                 প্যাকেজ কিনুন <TbPremiumRights className="" size={24} />
               </button>
             </div>
@@ -118,7 +118,7 @@ function readId() {
             {/* Page content here */}
             <button
               onClick={() => setShowReview(true)}
-              className="bg-gradient-to-r cursor-pointer from-[darkorchid] bg-opacity-50 to-[darkblue] text-white px-2 py-1 rounded gap-1 flex items-center"
+              className="bg-gradient cursor-pointer text-white px-2 py-1 rounded gap-1 flex items-center"
             >
               <BsStarHalf /> রিভিউ তৈরী করুন
             </button>
@@ -188,7 +188,7 @@ function readId() {
                 </div>
                 <div className="w-full md:w-96 lg:w-[596px] gap-1 flex">
                   <textarea className="px-4 py-2 w-full textarea bg-white h-full rounded border border-blue-600"></textarea>
-                  <button className="px-4 py-2 h-full rounded bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] text-white">
+                  <button className="px-4 py-2 h-full rounded bg-gradient text-white">
                     Review
                   </button>
                 </div>

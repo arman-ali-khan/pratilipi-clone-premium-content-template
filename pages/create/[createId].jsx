@@ -22,8 +22,6 @@ import { useEffect } from 'react';
       const { quill,quillRef } = useQuill({ theme, modules, formats, placeholder });
 
 
-  console.log(quill);    // undefined > Quill Object
-  console.log(quillRef); // { current: undefined } > { current: Quill Editor Reference }
 
   const defaultContent = typeof window !=='undefined' && JSON.parse(localStorage.getItem('content'))
   quill?.clipboard.dangerouslyPasteHTML(defaultContent);
@@ -46,8 +44,8 @@ import { useEffect } from 'react';
     <PostHeader />
      <div className='flex flex-col-reverse md:flex-row w-full gap-3 mt-12 mb-12'>
         {/* post box */}
-        <div className='md:container bg-gradient-to-r from-[darkorchid] p-1 rounded-xl bg-opacity-50 to-[darkblue] md:ml-12 h-[400px] md:h-[600px] md:w-[700px] md:max-w-full md:min-w-[300px] md:min-h-[500px] md:max-h-[800px] ' >
-      <div onChange={(e)=>console.log(e)} className='text-xs md:text-base bg-base-100 md:min-h-[500px] md:max-h-[800px] h-[400px] md:h-[600px] border rounded-lg' ref={quillRef} />
+        <div className='md:container bg-gradient p-0.5 md:p-1 rounded-md md:rounded-xl md:ml-12 h-[400px] md:h-[600px] md:w-[700px] md:max-w-full md:min-w-[300px] md:min-h-[500px] md:max-h-[800px] ' >
+      <div onChange={(e)=>console.log(e)} className='text-xs md:text-base bg-base-100 md:min-h-[500px] md:max-h-[800px] h-[400px] md:h-[600px] border rounded md:rounded-lg' ref={quillRef} />
     </div>
     {/* aside */}
     <aside className='w-96 max-w-fit min-w-56 h-fit px-4 md:px-2 '>

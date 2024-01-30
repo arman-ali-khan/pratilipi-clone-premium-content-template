@@ -68,11 +68,11 @@ function storyId() {
                 {
                     subscribed ? 
                     <button data-tip='পছন্দের তালিকায় যোগ করুন' onClick={()=>setSubscribed(!subscribed)}
-                    className={`w-12 flex tooltip items-center py-0 h-8 justify-center gap-2 bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] text-white rounded-md text-lg`}
+                    className={`w-12 flex tooltip items-center py-0 h-8 justify-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   ><MdOutlinePlaylistAdd className="px-2 py-0" size={44} /></button>
                     :
                     <button data-tip='পছন্দের তালিকা থেকে সরান' onClick={()=>setSubscribed(!subscribed)}
-                    className={`w-12 flex tooltip items-center justify-center h-8 gap-2 bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] p-[1px] rounded-md text-lg`}
+                    className={`w-12 flex tooltip items-center justify-center h-8 gap-2 bg-gradient p-[1px] rounded-md text-lg`}
                   >
                     <div className="bg-base-100 rounded w-full h-full flex items-center justify-center">
                     <MdOutlinePlaylistAddCheck className="px-2 py-0" size={44} />
@@ -87,13 +87,13 @@ function storyId() {
               <div className="flex items-center max-w-2xl gap-1 mt-4 w-full justify-between">
                 <div>
                  {subscribed ?  <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ করুন'
-                    className={`px-4 py-2 tooltip tooltip-right flex items-center gap-2 bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] text-white rounded-md text-lg`}
+                    className={`px-4 py-2 tooltip tooltip-right flex items-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   >
                     অনুসরণ <span className="hidden lg:block">করুন</span>  <FaPlus />
                   </button>
                 :
                 <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ থেকে সরান'
-                className={`items-center gap-2 tooltip tooltip-right bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
+                className={`items-center gap-2 tooltip tooltip-right bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
               >
                 <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                   <span className="flex items-center gap-2">
@@ -106,13 +106,13 @@ function storyId() {
                 </div>
                 <div className=" font-[SolaimanLipi]">
                  {subscribed ?  <button onClick={()=>setSubscribed(!subscribed)} data-tip='পছন্দ করুন'
-                    className={`px-4 py-2 tooltip flex items-center gap-2 bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] text-white rounded-md text-lg`}
+                    className={`px-4 py-2 tooltip flex items-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   >
                      পছন্দ <span className="hidden lg:block">করুন</span>  <TbHeart size={22} />
                   </button>
                   :
                    <button onClick={()=>setSubscribed(!subscribed)} data-tip='পছন্দ থেকে সরান'
-                    className={`items-center gap-2 tooltip bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] p-0.5 flex flex-col rounded-md ${ubuntu.className}`}>
+                    className={`items-center gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}>
                     <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                       <span className="flex items-center gap-2">
                       <span className="hidden lg:block">পছন্দ থেকে</span> সরান<TbHeartBroken className="text-[darkorchid]" size={22} />
@@ -122,14 +122,14 @@ function storyId() {
                   </button>}
                 </div>
                 <div>
-                  <button className="bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] p-0.5 rounded-md">
+                  <button className="bg-gradient p-0.5 rounded-md">
                     <p className="items-center flex rounded gap-1 bg-base-100  px-3 py-2 w-full">
                       <span className="hidden lg:block">পড়েছেনঃ</span> <span className="lg:hidden"><CgEye /></span> <span>{convertToBengaliNumber(1234)}+</span>
                     </p>
                   </button>
                 </div>
                 <div className="hidden md:block right-0">
-                  <button className="p-0.5 rounded-md bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid]">
+                  <button className="p-0.5 rounded-md bg-gradient">
                     <p className="items-center flex rounded gap-1 backdrop-blur-lg text-white px-3 py-2 w-full">
                       <span className="hidden lg:block">রেটিং</span> <span className="lg:hidden"><FaStarHalfAlt /></span> <span>{convertToBengaliNumber(4.6)}</span>
                     </p>
@@ -154,12 +154,12 @@ function storyId() {
 
                 <div className="w-full flex justify-end">
                 {subscribed ?  <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ করুন'
-                    className={`px-4 py-2 tooltip flex items-center gap-2 bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] text-white rounded-md text-lg`}
+                    className={`px-4 py-2 tooltip flex items-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   >
                     <span className="hidden lg:block">অনুসরণ করুন</span>  <FaPlus />
                   </button>
                 :
-                <button onClick={()=>setSubscribed(!subscribed)} data-tip='সরান' className={`items-center font-[SolaimanLipi] gap-2 tooltip bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
+                <button onClick={()=>setSubscribed(!subscribed)} data-tip='সরান' className={`items-center font-[SolaimanLipi] gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
               >
                 <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                   <span className="flex items-center gap-2">

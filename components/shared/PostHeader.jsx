@@ -15,7 +15,7 @@ function PostHeader() {
             <button className="px-4 py-2 rounded bg-rose-100 hover:bg-rose-500 hover:text-white text-rose-500 duration-300 flex items-center gap-1"> <MdDeleteOutline size={23} /><span className="hidden md:block">মুছুন</span></button>
                 <div className="flex items-center gap-2">
                 <button className="px-4 py-2 rounded bg-white border border-blue-300 hover:bg-zinc-200 duration-300 flex items-center gap-1"> <IoSaveOutline size={23} /> <span className="hidden md:block">খসড়া</span></button>
-                <button className="px-4 py-2 rounded bg-gradient-to-r from-[darkblue] to-[darkorchid] hover:from-[darkorchid] hover:to-[darkblue] hover:duration-300 text-white hover:opacity-85 duration-300 flex items-center gap-1"> <LuPencilLine size={23} /> <span className="hidden md:block">প্রকাশ</span></button>
+                <button className="px-4 py-2 rounded bg-gradient hover:from-[darkorchid] hover:to-[darkblue] hover:duration-300 text-white hover:opacity-85 duration-300 flex items-center gap-1"> <LuPencilLine size={23} /> <span className="hidden md:block">প্রকাশ</span></button>
                 </div>
               
             </div>

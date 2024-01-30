@@ -1,6 +1,6 @@
 function UserCard() {
     return (
-        <section class="w-full flex justify-between items-center text-xs mx-auto z-10 shadow-lg  rounded-xl p-2">
+        <section className="w-full flex justify-between items-center text-xs mx-auto z-10 shadow-lg  rounded-xl p-2">
 	<div className="flex items-center gap-2">
         <img className="w-12 h-12 rounded-full object-cover" src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="" />
         <div>
@@ -11,7 +11,7 @@ function UserCard() {
         </div>
     </div>
     </div>
-      <button className="bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] text-white px-2 md:px-4 rounded h-8 flex items-center py-2">Follow</button>
+      <button className="bg-gradient text-white px-2 md:px-4 rounded h-8 flex items-center py-2">Follow</button>
    
 		</section>
     );

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* utilities */
+@layer utilities {
+  .bg-gradient {
+    @apply bg-gradient-to-r from-[darkblue] to-[darkorchid] hover:from-[#1010c0]
+    bg-gradient-to-r from-[darkblue] to-[darkorchid] hover:from-[#1010c0]
+    bg-gradient-to-r from-[darkblue] to-[darkorchid] hover:from-[#1010c0] hover:to-[#8f24c5];
+  }
+}
+
 @font-face {
   font-family: "SolaimanLipi";
   src: url("/solaimanlipi.woff") format("truetype");
@@ -16,6 +25,12 @@
   margin: 0;
 }
 .tab:is(input[type="radio"]):after {
+  display: flex;
+  width: 100%;
+  color: darkblue;
+  font-weight: bold;
+}
+input.tab.border-black.w-full {
   display: flex;
   width: 100%;
   color: darkblue;

@@ -4,7 +4,7 @@ import Link from "next/link";
 function Story() {
   return (
     <section className="card-container w-full relative">
-        <div data-tip="Rating" className="rating gap-1 tooltip tooltip-left flex absolute top-3 z-4 right-3 bg-gradient-to-r from-[darkblue] bg-opacity-50 to-[darkorchid] text-white px-1 rounded-lg py-0.5 z-50 items-center">
+        <div data-tip="Rating" className="rating gap-1 tooltip tooltip-left flex absolute top-3 z-4 right-3 bg-gradient text-white px-1 rounded-lg py-0.5 z-50 items-center">
      {convertToBengaliNumber(3.5)} <input type="radio" name="rating-3" className="mask text-xs w-4 inline-block mask-star bg-orange-400" checked />
 </div>
       <div className="card card-compact border rounded-lg w-full shadow-xl">

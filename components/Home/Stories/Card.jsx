@@ -23,7 +23,7 @@ function Card({ i }) {
             প্রতাপগড়ের বৌরাণী{" "}
             <CgLock
               size={23}
-              className="bg-gradient-to-r from-[darkblue] bg-opacity-50 font-[SolaimanLipi] to-[darkorchid] text-white mask mask-squircle px-0.5"
+              className="bg-gradient text-white mask mask-squircle px-0.5"
             />
           </p>
           <p className="text-xs md:text-base font-thin truncate">12 দি আগে </p>
