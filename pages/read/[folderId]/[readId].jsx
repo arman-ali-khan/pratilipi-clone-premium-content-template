@@ -1,7 +1,7 @@
 import Reviews from "@/components/Sections/Comments/Reviews";
 import ReadingHeader from "@/components/shared/ReadingHeader";
 import ProgressBar from "@/lib/ProgressBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
@@ -9,6 +9,7 @@ import { TbPremiumRights } from "react-icons/tb";
 import { TiArrowBackOutline, TiArrowForwardOutline } from "react-icons/ti";
 
 function readId() {
+
   // bg change
   const [bg, setBg] = useState(0);
   // font
@@ -37,6 +38,27 @@ function readId() {
 
   // rating
   const [stars, setStars] = useState(1);
+// disable ss
+const [showOverlay, setShowOverlay] = useState(false);
+
+useEffect(() => {
+  const handleKeyDown = (event) => {
+    console.log(event,'envent')
+    if (event.key === "PrintScreen") {
+      setShowOverlay(true);
+      setTimeout(() => {
+        setShowOverlay(false);
+      }, 2000); // Hide the overlay after 2 seconds (adjust as needed)
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, []);
+
   return (
     <section
       style={{
@@ -58,8 +80,21 @@ function readId() {
         }}
         className="h-full px-3 sm:px-4 md:px-5 lg:px-6 max-w-3xl mx-auto"
       >
-        <p className={``} style={{ fontSize: font }}>
-          {" "}
+          {showOverlay  && (
+          <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "black",
+            zIndex: 9999,
+          }}
+        />
+      )}
+        <div className={``} style={{ fontSize: font }}>
+          
           {`আজ নীলের জন্মদিন। নীল আমার মেজোকাকুর ছেলে। ভালো নাম অন্রদীপ। ক্লাস ফোরে পড়ে। আমার
 
 ক্লাস ফাইভ। ছোটোকাকুর মেয়ে মউ। ওর ভালো নাম তনুশ্ী। ওর সবে ক্লাস টু। আমরা তিনজন বসার ঘরে
@@ -89,7 +124,7 @@ function readId() {
 আমি নীলের কথাটা কিছুতেই বিশ্বাস করতে পারলাম না। ও কথা বিশ্বাস করা যায় না। মেজোকাকু একটা
 
 কিছু করেবনই।`}
-        </p>
+        </div>
         {/* Post footer */}
         <div className="my-12 w-full">
           <div className="flex w-full rounded-md p-3 gap-4 justify-between text-left float-left">

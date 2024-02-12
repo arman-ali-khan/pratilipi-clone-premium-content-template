@@ -2,7 +2,7 @@ import Card from "@/components/Home/Stories/Card";
 import Bottombar from "@/components/shared/Bottombar";
 import Navbar from "@/components/shared/Navbar";
 import { convertToBengaliNumber } from "@/lib/convertToBengaliNumber";
-import { Ubuntu } from "next/font/google";
+import { increment } from "@/redux/features/subscribeSlice";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -10,13 +10,13 @@ import { CgEye } from "react-icons/cg";
 import { FaCheck, FaPlus, FaStarHalfAlt } from "react-icons/fa";
 import { MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from "react-icons/md";
 import { TbHeart, TbHeartBroken } from "react-icons/tb";
-const ubuntu = Ubuntu({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
+import { useDispatch, useSelector } from "react-redux";
+
 function storyId() {
+  // subscribe state
+  const subscribes = useSelector(state=>state.subscribe)
+  console.log(subscribes?.subscribes,'subscribes')
+  const dispatch = useDispatch()
   const handleCopy = (e) => {
     e.preventDefault();
     toast.error("Copy not allowed");
@@ -24,6 +24,17 @@ function storyId() {
 
   // subscribe
   const [subscribed,setSubscribed] = useState(false)
+// handle subscribe
+const handleSubscribe = data =>{
+  const subscribeData = {
+    subscribes: data,
+    userId:'123',
+    subscribeId:'345',
+    subscribe:{type:'user',userId:'123',storyId:''},
+  }
+  dispatch(increment(subscribeData))
+}
+
   return (
     <section>
       <Navbar />
@@ -67,11 +78,14 @@ function storyId() {
                 </h2>
                 {
                     subscribed ? 
-                    <button data-tip='পছন্দের তালিকায় যোগ করুন' onClick={()=>setSubscribed(!subscribed)}
+                    <button data-tip='পছন্দের তালিকায় যোগ করুন' onClick={()=>{
+                      
+                      setSubscribed(!subscribed)}}
                     className={`w-12 flex tooltip items-center py-0 h-8 justify-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   ><MdOutlinePlaylistAdd className="px-2 py-0" size={44} /></button>
                     :
-                    <button data-tip='পছন্দের তালিকা থেকে সরান' onClick={()=>setSubscribed(!subscribed)}
+                    <button data-tip='পছন্দের তালিকা থেকে সরান' onClick={()=>{
+                      setSubscribed(!subscribed)}}
                     className={`w-12 flex tooltip items-center justify-center h-8 gap-2 bg-gradient p-[1px] rounded-md text-lg`}
                   >
                     <div className="bg-base-100 rounded w-full h-full flex items-center justify-center">
@@ -86,14 +100,14 @@ function storyId() {
               {/* Story Info */}
               <div className="flex items-center max-w-2xl gap-1 mt-4 w-full justify-between">
                 <div>
-                 {subscribed ?  <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ করুন'
+                 {subscribes?.subscribes ?  <button onClick={()=>handleSubscribe(false)} data-tip='অনুসরণ করুন'
                     className={`px-4 py-2 tooltip tooltip-right flex items-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   >
                     অনুসরণ <span className="hidden lg:block">করুন</span>  <FaPlus />
                   </button>
                 :
-                <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ থেকে সরান'
-                className={`items-center gap-2 tooltip tooltip-right bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
+                <button onClick={()=>handleSubscribe(true)} data-tip='অনুসরণ থেকে সরান'
+                className={`items-center gap-2 tooltip tooltip-right bg-gradient p-0.5 flex flex-col rounded-md `}
               >
                 <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                   <span className="flex items-center gap-2">
@@ -112,7 +126,7 @@ function storyId() {
                   </button>
                   :
                    <button onClick={()=>setSubscribed(!subscribed)} data-tip='পছন্দ থেকে সরান'
-                    className={`items-center gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}>
+                    className={`items-center gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md`}>
                     <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                       <span className="flex items-center gap-2">
                       <span className="hidden lg:block">পছন্দ থেকে</span> সরান<TbHeartBroken className="text-[darkorchid]" size={22} />
@@ -153,13 +167,13 @@ function storyId() {
                 </div>
 
                 <div className="w-full flex justify-end">
-                {subscribed ?  <button onClick={()=>setSubscribed(!subscribed)} data-tip='অনুসরণ করুন'
+                {subscribes?.subscribes ?  <button onClick={()=>handleSubscribe(false)} data-tip='অনুসরণ করুন'
                     className={`px-4 py-2 tooltip flex items-center gap-2 bg-gradient text-white rounded-md text-lg`}
                   >
                     <span className="hidden lg:block">অনুসরণ করুন</span>  <FaPlus />
                   </button>
                 :
-                <button onClick={()=>setSubscribed(!subscribed)} data-tip='সরান' className={`items-center font-[SolaimanLipi] gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md ${ubuntu.className}`}
+                <button onClick={()=>handleSubscribe(true)} data-tip='সরান' className={`items-center font-[SolaimanLipi] gap-2 tooltip bg-gradient p-0.5 flex flex-col rounded-md`}
               >
                 <div className="items-center flex rounded flex-col bg-base-100  px-3 py-2 w-full font-[SolaimanLipi]">
                   <span className="flex items-center gap-2">

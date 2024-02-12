@@ -1,75 +1,72 @@
-import { useQuill } from 'react-quilljs';
+import Story from "@/components/Home/Stories/Story";
+import StoryEdit from "@/components/Home/Stories/StoryEdit";
+import StoryPart from "@/components/Sections/Story/Create/StoryPart";
+import PostHeader from "@/components/shared/PostHeader";
+import { FaPlus } from "react-icons/fa";
 
-import PostHeader from '@/components/shared/PostHeader';
-import 'quill/dist/quill.bubble.css'; // Add css for snow theme
-import { useEffect } from 'react';
-// or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
-
- const createId= () => {
-
-
-    const theme = 'bubble';
-    const modules = {
-        toolbar: [
-          ['bold', 'italic', 'underline', 'strike','image','list','header','clean'],
-        ],
-      };
-    
-      const placeholder = 'লিখুন...';
-    
-      const formats = ['bold', 'italic', 'underline', 'strike','image','list','header','clean'];
-    
-      const { quill,quillRef } = useQuill({ theme, modules, formats, placeholder });
-
-
-
-  const defaultContent = typeof window !=='undefined' && JSON.parse(localStorage.getItem('content'))
-  quill?.clipboard.dangerouslyPasteHTML(defaultContent);
-  
-  useEffect(() => {
-    if (quill) {
-      quill.on('text-change', (delta, oldDelta, source) => {
-        
-        // console.log(quill.getText()); // Get text only
-        const content = quill.root.innerHTML
-        // console.log(quill.getContents()); // Get delta contents
-        typeof window !=='undefined' && localStorage.setItem('content',JSON.stringify(content))
-        // console.log(quill.root.innerHTML); // Get innerHTML using quill
-        // console.log(quillRef.current.firstChild.innerHTML); // Get innerHTML using quillRef
-      });
-    }
-  }, [quill]);
+function createId() {
   return (
-   <section className='container mx-auto'>
-    <PostHeader />
-     <div className='flex flex-col-reverse md:flex-row w-full gap-3 mt-12 mb-12'>
-        {/* post box */}
-        <div className='md:container bg-gradient p-0.5 md:p-1 rounded-md md:rounded-xl md:ml-12 h-[400px] md:h-[600px] md:w-[700px] md:max-w-full md:min-w-[300px] md:min-h-[500px] md:max-h-[800px] ' >
-      <div onChange={(e)=>console.log(e)} className='text-xs md:text-base bg-base-100 md:min-h-[500px] md:max-h-[800px] h-[400px] md:h-[600px] border rounded md:rounded-lg' ref={quillRef} />
-    </div>
-    {/* aside */}
-    <aside className='w-96 max-w-fit min-w-56 h-fit px-4 md:px-2 '>
-        <div>
-          
-           <h2 className='font-bold text-xl'>নির্দেশনাঃ</h2>
-            <div>
-                <ul>
-                    <li className='list-item list-inside list-decimal'>
-                        গল্প সম্পুর্ন বাংলা ভাষায় লিখতে হবে । 
-                    </li>
-                    <li className='list-item list-inside list-decimal'>
-                        লেখার সুবিধার্তে <a className='font-bold text-blue-600' href="https://chromewebstore.google.com/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab" target='_blank'>গুগল ইনপুট টুলস</a> ব্যবহার করতে পারেন । (<a className='font-bold text-blue-600' href="https://chromewebstore.google.com/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab" target='_blank'>ব্যবহারের নিয়ম</a>)
-                    </li>
-                    <li className='list-item list-inside list-decimal'>
-                        ছবি আপলোড করার আগে যে কোন কিছু (দরকারি কিছু নয় এমন) লিখে সিলেক্ট করুন তার পর ছবির আইকনে ক্লিক করে ছবি বাছাই করুন । 
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </aside>
-    </div>
-   </section>
-  );
-};
+  <section className="container mx-auto">
+   <PostHeader />
+   <div className="flex flex-col-reverse md:flex-row w-full gap-3 mt-12 mb-12">
+        {/* instruction */}
+        <div className="w-full md:ml-12">
+          <h2 className="font-bold text-xl">আমার গল্প গুলো</h2>
+          <div className="w-full p-2">
+            <ul className="trun">
+              <li className="list-item list-inside list-decimal">
+                গল্প সম্পুর্ন বাংলা ভাষায় লিখতে হবে ।
+              </li>
+              <li className="list-item list-inside list-decimal">
+                লেখার সুবিধার্তে{" "}
+                <a
+                  className="font-bold text-blue-600"
+                  href="https://chromewebstore.google.com/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab"
+                  target="_blank"
+                >
+                  গুগল ইনপুট টুলস
+                </a>{" "}
+                ব্যবহার করতে পারেন । (
+                <a
+                  className="font-bold text-blue-600"
+                  href="https://chromewebstore.google.com/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab"
+                  target="_blank"
+                >
+                  ব্যবহারের নিয়ম
+                </a>
+                )
+              </li>
+              <li className="list-item list-inside list-decimal">
+                ছবি আপলোড করার আগে যে কোন কিছু (দরকারি কিছু নয় এমন) লিখে সিলেক্ট
+                করুন তার পর ছবির আইকনে ক্লিক করে ছবি বাছাই করুন ।
+              </li>
+            </ul>
+          </div>
 
-export default createId
+          {/* post box */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2">
+        {
+          [...Array(4).keys()]?.map((story,i)=>{
+            return <StoryEdit />
+          })
+         }
+        </section>
+        </div>
+        {/* aside */}
+        {/* <aside className="w-96 max-w-fit min-w-56 space-y-2 h-fit px-4 md:px-2 ">
+          <StoryPart />
+          <div className="w-full rounded-md border border-zinc-400 p-2">
+            <button
+              onClick={() => handleCreateNewPart()}
+              className="font-bold w-full py-2 text-center flex justify-center items-center gap-2"
+            >
+              <FaPlus /> নতুন পর্ব তৈরি করুন
+            </button>
+          </div>
+        </aside> */}
+      </div>
+  </section>
+  );
+}
+
+export default createId;

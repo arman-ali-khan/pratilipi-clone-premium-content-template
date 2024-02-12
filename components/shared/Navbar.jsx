@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { useState } from "react";
+import { CgClose } from "react-icons/cg";
+import Search from "../Sections/Search/Search";
+import SearchResults from "../Sections/Search/SearchResults";
 
 function Navbar() {
   const [showSearch,setShowSearch] = useState(false)
+
+  // input change
+  const [input,setInput] = useState('')
     return (
         <div className="navbar sticky top-0 !py-0 z-[1250] bg-base-100">
         <div className="navbar-start">
@@ -18,22 +24,29 @@ function Navbar() {
           </div>
           <Link href="/" className="btn btn-ghost text">daisyUI</Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden sm:flex">
           {/* search */}
           <div className="flex items-center gap-1">
             <div className="relative">
-            <input onFocus={()=>setShowSearch(true)} onBlur={()=>setShowSearch(false)} placeholder="Search..." className="input rounded-full input-bordered input-sm" type="search" name="search" id="search" />
+              {
+                showSearch?<button onClick={()=>setShowSearch(false)} className="fixed top-0 -z-10 left-0 w-screen h-screen"></button>:''
+              }
+              {
+                input?.length ? <button onClick={()=>setInput('')} className="absolute right-20 hover:bg-zinc-200 hover:rounded-full px-2 py-2"><CgClose /></button>:''
+              }
+            <input value={input} onChange={e=>setInput(e.target.value)} onFocus={()=>setShowSearch(true)} placeholder="Search..." className="input rounded-full input-bordered md:w-96 z-30 input-sm" type="search" name="search" id="search" />
             {
-              showSearch ? <div onMouseEnter={()=>setShowSearch(true)} className="absolute w-full -bottom-96 h-96 bg-black"></div>:''
+              showSearch ? 
+             input?.length ? <SearchResults />:<Search showSearch={showSearch} setShowSearch={setShowSearch} input={input} setInput={setInput} />:''
             }
             
+            <button className="py-1 bg-gradient text-white rounded-full px-4 absolute right-0">Search</button>
             </div>
-            <button>Search</button>
           </div>
-          <ul className="menu menu-horizontal gap-4 px-1">
-          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded">দিনলিপি</Link>
-          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded">পাঠাগার</Link>
-          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded">অডিও</Link>
+          <ul className="menu menu-horizontal hidden lg:flex gap-4 px-1">
+          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded-full">দিনলিপি</Link>
+          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded-full">পাঠাগার</Link>
+          <Link href={'/create/23'} className="bg-gradient duration-300 text-white px-4 py-2 rounded-full">অডিও</Link>
           </ul>
         </div>
         <div className="navbar-end gap-3">
