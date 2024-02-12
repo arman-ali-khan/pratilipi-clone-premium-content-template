@@ -2,6 +2,8 @@ import Story from "@/components/Home/Stories/Story";
 import StoryEdit from "@/components/Home/Stories/StoryEdit";
 import StoryPart from "@/components/Sections/Story/Create/StoryPart";
 import PostHeader from "@/components/shared/PostHeader";
+import { convertToBengaliNumber } from "@/lib/convertToBengaliNumber";
+import Link from "next/link";
 import { FaPlus } from "react-icons/fa";
 
 function createId() {
@@ -50,7 +52,14 @@ function createId() {
             return <StoryEdit />
           })
          }
+         <div className="card-container min-w-48 max-h-96 max-w-56 w-64 flex justify-center relative">
+        <Link className="card card-compact border rounded-lg items-center shadow-xl justify-center flex h-full text-center w-full" href={'/create/part/123'}>
+          <FaPlus size={55} />
+          <p>নতুন গল্প</p>
+        </Link>
+      </div>
         </section>
+       
         </div>
         {/* aside */}
         {/* <aside className="w-96 max-w-fit min-w-56 space-y-2 h-fit px-4 md:px-2 ">
